@@ -14,31 +14,31 @@ class Priority
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private $priority_id;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $name;
+    private $priority_name;
 
     /**
      * @ORM\Column(type="text")
      */
     private $issue_id;
 
-    public function getId(): ?int
+    public function getPriorityId(): ?int
     {
-        return $this->id;
+        return $this->priority_id;
     }
 
-    public function getName(): ?string
+    public function getPriorityName(): ?string
     {
-        return $this->name;
+        return $this->priority_name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $priority_name): self
     {
-        $this->name = $name;
+        $this->priority_name = $priority_name;
 
         return $this;
     }
