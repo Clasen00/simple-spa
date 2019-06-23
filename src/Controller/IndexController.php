@@ -10,7 +10,8 @@ use App\Entity\Issues;
 final class IndexController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/{vueRouting}", name="index")
+    *  @Route("/", name="index")
      * @return Response
      */
     public function indexAction(): Response
