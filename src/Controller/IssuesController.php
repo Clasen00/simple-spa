@@ -25,25 +25,25 @@ final class IssuesController extends AbstractController
     public function __construct(SerializerInterface $serializer, IssuesService $issuesService)
     {
         $this->serializer = $serializer;
-        $this->postService = $issuesService;
+        $this->issuesService = $issuesService;
     }
 
     /**
-     * @Rest\Post("/api/post/create", name="createPost")
+     * @Rest\Post("/api/issues/create", name="createIssue")
      * @param Request $request
      * @return JsonResponse
      */
     public function createAction(Request $request): JsonResponse
     {
         $message = $request->request->get('message');
-        $postEntity = $this->postService->createPost($message);
-        $data = $this->serializer->serialize($postEntity, 'json');
+        $issuesEntity = $this->issuesService->createIssue($message, message, message, message, message);
+        $data = $this->serializer->serialize($issuesEntity, 'json');
 
         return new JsonResponse($data, 200, [], true);
     }
 
     /**
-     * @Rest\Get("/api/issues", name="getAllPosts")
+     * @Rest\Get("/api/issues", name="getAllIssues")
      * @return JsonResponse
      */
     public function getAllActions(): JsonResponse

@@ -12,7 +12,7 @@ final class IssuesService
     private $em;
 
     /**
-     * PostService constructor.
+     * IssuesService constructor.
      * @param EntityManagerInterface $em
      */
     public function __construct(EntityManagerInterface $em)
