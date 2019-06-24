@@ -36,7 +36,7 @@ class Priority
         return $this->priority_name;
     }
 
-    public function setName(string $priority_name): self
+    public function setPriorityName(string $priority_name): self
     {
         $this->priority_name = $priority_name;
 
