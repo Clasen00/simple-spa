@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="row col">
-            <h1>Homepage</h1>
+            <h1>Простое Spa приложение</h1>
         </div>
 
         <div class="row col">
-            <p>This is the homepage of our Vue.js application.</p>
+            <p>Домашняя страница приложения.</p>
         </div>
     </div>
 </template>
