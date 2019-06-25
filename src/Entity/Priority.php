@@ -14,6 +14,11 @@ class Priority
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
+    private $id;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
     private $priority_id;
 
     /**
@@ -22,10 +27,14 @@ class Priority
     private $priority_name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Issues", fetch="EAGER")
-     * @ORM\JoinColumn(name="id", referencedColumnName="issue_id", nullable=false)
+     * @ORM\Column(type="integer")
      */
     private $issue_id;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getPriorityId(): ?int
     {
@@ -35,6 +44,13 @@ class Priority
     public function getPriorityName(): ?string
     {
         return $this->priority_name;
+    }
+
+    public function setPriorityId(?int $priority_id): self
+    {
+        $this->priority_id = $priority_id;
+
+        return $this;
     }
 
     public function setPriorityName(string $priority_name): self
@@ -49,7 +65,7 @@ class Priority
         return $this->issue_id;
     }
 
-    public function setIssueId(string $issue_id): self
+    public function setIssueId(?int $issue_id): self
     {
         $this->issue_id = $issue_id;
 

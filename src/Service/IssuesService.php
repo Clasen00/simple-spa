@@ -38,15 +38,17 @@ final class IssuesService
         $issuesEntity->setUpdatedOn($updatedOn);
         $issuesEntity->setParent(330);
         $issuesEntity->setDoneRatio(0);
-        $issuesEntity->setPriority($priorityEntity->getPriorityId);
+        $issuesEntity->setPriority(1);
 
+        $priorityEntity->setPriorityId(1);
         $priorityEntity->setPriorityName('Нормальный');
-        $priorityEntity->setName($issuesEntity->getId);
+        $priorityEntity->setIssueId(1);
         
         $this->em->persist($issuesEntity);
+        $this->em->flush();
+        
         $this->em->persist($priorityEntity);
         $this->em->flush();
-
         return $issuesEntity;
     }
 

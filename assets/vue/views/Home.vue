@@ -11,14 +11,14 @@
                         <input v-model="message" type="text" class="form-control">
                     </div>
                     <div class="col-4">
-                        <button @click="createIssue()" :disabled="message.length === 0 || isLoading" type="button" class="btn btn-primary">Create</button>
+                        <button @click="createIssue()" :disabled="message.length === 0 || isLoading" type="button" class="btn btn-primary">Создать</button>
                     </div>
                 </div>
             </form>
         </div>
 
         <div v-if="isLoading" class="row col">
-            <p>Loading...</p>
+            <p>Загрузка...</p>
         </div>
 
         <div v-else-if="hasError" class="row col">
@@ -31,8 +31,8 @@
             No Issues!
         </div>
 
-        <div v-else v-for="issue in issues" :key="issue" class="row col">
-            <issue :message="issue.message"></issue>
+        <div v-else v-for="(issue, index) in issues" :key="index" class="row col">
+            <issues :message="issue.subject"></issues>
         </div>
     </div>
 </template>
@@ -55,19 +55,19 @@
         },
         computed: {
             isLoading () {
-                return this.$store.getters['issues/isLoading'];
+                return this.$store.getters['issue/isLoading'];
             },
             hasError () {
-                return this.$store.getters['issues/hasError'];
+                return this.$store.getters['issue/hasError'];
             },
             error () {
-                return this.$store.getters['issues/error'];
+                return this.$store.getters['issue/error'];
             },
             hasIssues () {
-                return this.$store.getters['issues/hasIssues'];
+                return this.$store.getters['issue/hasIssues'];
             },
             issues () {
-                return this.$store.getters['issues/issues'];
+                return this.$store.getters['issue/issues'];
             },
         },
         methods: {
