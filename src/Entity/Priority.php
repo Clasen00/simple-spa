@@ -22,7 +22,8 @@ class Priority
     private $priority_name;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Issues", fetch="EAGER")
+     * @ORM\JoinColumn(name="id", referencedColumnName="issue_id", nullable=false)
      */
     private $issue_id;
 

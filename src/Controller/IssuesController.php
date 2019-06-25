@@ -34,12 +34,16 @@ final class IssuesController extends AbstractController
      * @return JsonResponse
      */
     public function createAction(Request $request): JsonResponse
-    {
+    {   //тут ломается на ошибке 500
         $message = $request->request->get('message');
-        $issuesEntity = $this->issuesService->createIssue($message, message, message, message, message);
+        $issuesEntity = $this->issuesService->createIssue($message, $message, $message, $message, $message);
         $data = $this->serializer->serialize($issuesEntity, 'json');
 
         return new JsonResponse($data, 200, [], true);
+    }
+
+    protected function getJson() {
+
     }
 
     /**
