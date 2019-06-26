@@ -11,14 +11,8 @@ export default {
         isLoading (state) {
             return state.isLoading;
         },
-        hasError (state) {
-            return state.error !== null;
-        },
         error (state) {
             return state.error;
-        },
-        hasIssues (state) {
-            return state.issues.length > 0;
         },
         issues (state) {
             return state.issues;

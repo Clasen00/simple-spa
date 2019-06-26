@@ -21,13 +21,13 @@
             <p>Загрузка...</p>
         </div>
 
-        <div v-else-if="hasError" class="row col">
+        <div v-else-if="error" class="row col">
             <div class="alert alert-danger" role="alert">
                 {{ error }}
             </div>
         </div>
 
-        <div v-else-if="!hasIssues" class="row col">
+        <div v-else-if="!issues.length > 0" class="row col">
             No Issues!
         </div>
 
@@ -57,14 +57,8 @@
             isLoading () {
                 return this.$store.getters['issue/isLoading'];
             },
-            hasError () {
-                return this.$store.getters['issue/hasError'];
-            },
             error () {
                 return this.$store.getters['issue/error'];
-            },
-            hasIssues () {
-                return this.$store.getters['issue/hasIssues'];
             },
             issues () {
                 return this.$store.getters['issue/issues'];
