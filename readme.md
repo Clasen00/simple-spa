@@ -12,6 +12,11 @@
 
     yarn install
 
+### Создаем миграции doctrine и выполняем их ###
+
+    bin/console doctrine:migrations:diff
+    bin/console doctrine:migrations:migrate
+
 ### Запускаем сборщик ###
 
     yarn dev
