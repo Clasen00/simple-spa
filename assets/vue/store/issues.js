@@ -25,27 +25,14 @@ export default {
         },
         ['CREATING_ISSUES_SUCCESS'](state, issue) {
             state.isLoading = false;
-            state.error = null;
-            state.issues.unshift(issue);
+            state.issues.data.unshift(issue);
         },
-        ['CREATING_ISSUES_ERROR'](state, error) {
-            state.isLoading = false;
-            state.error = error;
-            state.issues = [];
-        },
-        ['FETCHING_ISSUES'](state) {
-            state.isLoading = true;
-            state.error = null;
-            state.issues = [];
-        },
-        ['FETCHING_ISSUES_SUCCESS'](state, issues) {
-            state.isLoading = false;
-            state.error = null;
+        ['FETCHING_ISSUES'](state, issues) {
             state.issues = issues;
         },
-        ['FETCHING_ISSUES_ERROR'](state, error) {
-            state.isLoading = false;
+        ['ISSUES_ERROR'](state, error) {
             state.error = error;
+            console.log(error);
             state.issues = [];
         },
     },
@@ -54,13 +41,12 @@ export default {
             commit('CREATING_ISSUES');
             return IssuesAPI.create(message)
                 .then(res => commit('CREATING_ISSUES_SUCCESS', res.data))
-                .catch(err => commit('CREATING_ISSUES_ERROR', err));
+                .catch(err => commit('ISSUES_ERROR', err));
         },
-        fetchIssues ({commit}) {
-            commit('FETCHING_ISSUES');
+        fetchIssues(context) {
             return IssuesAPI.getAll()
-                .then(res => commit('FETCHING_ISSUES_SUCCESS', res.data))
-                .catch(err => commit('FETCHING_ISSUES_ERROR', err));
-        },
+                .then(issues => context.commit('FETCHING_ISSUES', issues))
+                .catch(err => context.commit('ISSUES_ERROR', err));
+        }
     },
 }
